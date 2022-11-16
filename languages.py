@@ -6,6 +6,7 @@ def language_read_from(stream, line):
 
     language = Language()
     language.year = int(stream.readline().rstrip('\n'))
+    language.references = int(stream.readline().rstrip('\n'))
 
     if k == 1:
         language.key = Type.procedure
@@ -32,6 +33,7 @@ def language_write_to(language, stream):
         stream.write('Error type\n')
 
     stream.write(f'Year: {language.year}\n')
+    stream.write(f'References: {language.references}\n')
 
 
 def procedure_read_from(language, stream):
@@ -52,6 +54,7 @@ def object_oriented_write_to(language, stream):
 class Language:
     def __init__(self):
         self.year = None
+        self.references = None
 
         self.key = None
         self.obj = None
