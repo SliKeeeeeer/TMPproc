@@ -21,8 +21,8 @@ def main():
 
     output_file = open(sys.argv[2], "w")
     container_sort(cont)
-    # container_write_to(cont, output_file)
-    container_write_to_procedure(cont, output_file)
+    container_write_to(cont, output_file)
+    # container_write_to_procedure(cont, output_file)
 
     container_clear(cont)
 
