@@ -1,0 +1,17 @@
+Container has 3 elements
+[Functional language]
+Inheritance type: 2
+Has lazy evaluation: True
+Year: 2021
+Years passed: 1
+References: 3000000
+[OOP language]
+Inheritance type: 1
+Year: 2020
+Years passed: 2
+References: 9000
+[Procedure language]
+Has abstract type: True
+Year: 2016
+Years passed: 6
+References: 100500
