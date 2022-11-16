@@ -15,6 +15,10 @@ def language_read_from(stream, line):
         language.key = Type.object_oriented
         language.obj = ObjectOriented()
         object_oriented_read_from(language.obj, stream)
+    elif k == 3:
+        language.key = Type.functional
+        language.obj = Functional()
+        functional_read_from(language.obj, stream)
     else:
         return 0
 
@@ -28,6 +32,9 @@ def language_write_to(language, stream):
     elif language.key == Type.object_oriented:
         stream.write('[OOP language]\n')
         object_oriented_write_to(language.obj, stream)
+    elif language.key == Type.functional:
+        stream.write('[Functional language]\n')
+        functional_write_to(language.obj, stream)
     else:
         stream.write('Error type\n')
 
@@ -36,6 +43,7 @@ def language_write_to(language, stream):
 
 def procedure_read_from(language, stream):
     language.has_abstract_type = bool(stream.readline())
+
 
 def procedure_write_to(language, stream):
     stream.write(f'Has abstract type: {language.has_abstract_type}\n')
@@ -47,6 +55,16 @@ def object_oriented_read_from(language, stream):
 
 def object_oriented_write_to(language, stream):
     stream.write(f'Inheritance type: {language.inheritance_type}\n')
+
+
+def functional_read_from(language, stream):
+    language.typification = int(stream.readline())
+    language.has_lazy_evaluation = bool(stream.readline())
+
+
+def functional_write_to(language, stream):
+    stream.write(f'Inheritance type: {language.typification}\n')
+    stream.write(f'Has lazy evaluation: {language.has_lazy_evaluation}\n')
 
 
 class Language:
@@ -67,6 +85,13 @@ class ObjectOriented:
         self.inheritance_type = None
 
 
+class Functional:
+    def __init__(self):
+        self.typification = None
+        self.has_lazy_evaluation = None
+
+
 class Type(Enum):
     procedure = 1
     object_oriented = 2
+    functional = 3
