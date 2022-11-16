@@ -1,12 +1,23 @@
 from enum import Enum
+import sys
 
 
 def language_read_from(stream, line):
-    k = int(line)
+    try:
+        k = int(line)
+    except:
+        print('Converting to int error')
+        stream.close()
+        sys.exit(1)
 
     language = Language()
-    language.year = int(stream.readline().rstrip('\n'))
-    language.references = int(stream.readline().rstrip('\n'))
+    try:
+        language.year = int(stream.readline().rstrip('\n'))
+        language.references = int(stream.readline().rstrip('\n'))
+    except:
+        print('Converting to int error')
+        stream.close()
+        sys.exit(1)
 
     if k == 1:
         language.key = Type.procedure
@@ -39,9 +50,14 @@ def language_write_to(language, stream):
     else:
         stream.write('Error type\n')
 
-    stream.write(f'Year: {language.year}\n')
-    stream.write(f'Years passed: {years_passed(language)}\n')
-    stream.write(f'References: {language.references}\n')
+    try:
+        stream.write(f'Year: {language.year}\n')
+        stream.write(f'Years passed: {years_passed(language)}\n')
+        stream.write(f'References: {language.references}\n')
+    except:
+        print('Writing to file error')
+        stream.close()
+        sys.exit(1)
 
 
 def procedure_read_from(language, stream):
@@ -49,7 +65,12 @@ def procedure_read_from(language, stream):
 
 
 def procedure_write_to(language, stream):
-    stream.write(f'Has abstract type: {language.has_abstract_type}\n')
+    try:
+        stream.write(f'Has abstract type: {language.has_abstract_type}\n')
+    except:
+        print('Writing to file error')
+        stream.close()
+        sys.exit(1)
 
 
 def object_oriented_read_from(language, stream):
@@ -57,7 +78,12 @@ def object_oriented_read_from(language, stream):
 
 
 def object_oriented_write_to(language, stream):
-    stream.write(f'Inheritance type: {language.inheritance_type}\n')
+    try:
+        stream.write(f'Inheritance type: {language.inheritance_type}\n')
+    except:
+        print('Writing to file error')
+        stream.close()
+        sys.exit(1)
 
 
 def years_passed(language):
@@ -69,13 +95,23 @@ def compare(self, other):
 
 
 def functional_read_from(language, stream):
-    language.typification = int(stream.readline())
-    language.has_lazy_evaluation = bool(stream.readline())
+    try:
+        language.typification = int(stream.readline())
+        language.has_lazy_evaluation = bool(stream.readline())
+    except:
+        print('Converting to int error')
+        stream.close()
+        sys.exit(1)
 
 
 def functional_write_to(language, stream):
-    stream.write(f'Inheritance type: {language.typification}\n')
-    stream.write(f'Has lazy evaluation: {language.has_lazy_evaluation}\n')
+    try:
+        stream.write(f'Inheritance type: {language.typification}\n')
+        stream.write(f'Has lazy evaluation: {language.has_lazy_evaluation}\n')
+    except:
+        print('Writing to file error')
+        stream.close()
+        sys.exit(1)
 
 
 class Language:
