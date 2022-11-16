@@ -1,4 +1,4 @@
-from languages import language_read_from, language_write_to, compare
+from languages import language_read_from, language_write_to, compare, Type
 
 
 class Node:
@@ -59,3 +59,13 @@ def container_sort(container):
                 n2 = n2.next
             n1 = n1.next
             n2 = container.start_node
+
+
+def container_write_to_procedure(container, stream):
+    stream.write('Only procedure languages\n')
+
+    n = container.start_node
+    while n is not None:
+        if n.data.key == Type.procedure:
+            language_write_to(n.data, stream)
+        n = n.next
