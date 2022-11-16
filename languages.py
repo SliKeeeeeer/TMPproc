@@ -32,10 +32,12 @@ def language_write_to(language, stream):
         stream.write('Error type\n')
 
     stream.write(f'Year: {language.year}\n')
+    stream.write(f'Years passed: {years_passed(language)}\n')
 
 
 def procedure_read_from(language, stream):
     language.has_abstract_type = bool(stream.readline())
+
 
 def procedure_write_to(language, stream):
     stream.write(f'Has abstract type: {language.has_abstract_type}\n')
@@ -47,6 +49,14 @@ def object_oriented_read_from(language, stream):
 
 def object_oriented_write_to(language, stream):
     stream.write(f'Inheritance type: {language.inheritance_type}\n')
+
+
+def years_passed(self):
+    return 2022 - self.year
+
+
+def compare(self, other):
+    return years_passed(self) < years_passed(other)
 
 
 class Language:
