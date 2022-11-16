@@ -1,4 +1,4 @@
-from languages import language_read_from, language_write_to
+from languages import language_read_from, language_write_to, Type
 
 
 class Node:
@@ -44,3 +44,13 @@ def container_write_to(container, stream):
         while n is not None:
             language_write_to(n.data, stream)
             n = n.next
+
+
+def container_write_to_procedure(container, stream):
+    stream.write('Only procedure languages\n')
+
+    n = container.start_node
+    while n is not None:
+        if n.data.key == Type.procedure:
+            language_write_to(n.data, stream)
+        n = n.next

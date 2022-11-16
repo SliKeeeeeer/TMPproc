@@ -4,6 +4,7 @@ from container import (
     container_read_from,
     container_write_to,
     container_clear,
+    container_write_to_procedure,
     Container
 )
 
@@ -19,7 +20,8 @@ def main():
     print('Filled container')
 
     output_file = open(sys.argv[2], "w")
-    container_write_to(cont, output_file)
+    # container_write_to(cont, output_file)
+    container_write_to_procedure(cont, output_file)
 
     container_clear(cont)
 

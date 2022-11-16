@@ -1,8 +1,5 @@
-Container has 2 elements
+Only procedure languages
 [Procedure language]
 Has abstract type: True
 Year: 2016
-[OOP language]
-Inheritance type: 1
-Year: 2020
 Container has 0 elements
