@@ -4,9 +4,9 @@ from container import (
     container_read_from,
     container_write_to,
     container_clear,
+    container_sort,
     Container
 )
-
 
 def main():
     input_file = open(sys.argv[1], "r")
@@ -19,6 +19,7 @@ def main():
     print('Filled container')
 
     output_file = open(sys.argv[2], "w")
+    container_sort(cont)
     container_write_to(cont, output_file)
 
     container_clear(cont)
