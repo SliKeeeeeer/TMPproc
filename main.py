@@ -6,6 +6,7 @@ from container import (
     container_clear,
     container_sort,
     container_write_to_procedure,
+    container_check_languages,
     Container
 )
 
@@ -38,6 +39,7 @@ def main():
     container_sort(cont)
     container_write_to(cont, output_file)
     # container_write_to_procedure(cont, output_file)
+    container_check_languages(cont)
 
     container_clear(cont)
 
